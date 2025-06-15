@@ -14,6 +14,11 @@ FROM ghcr.io/ublue-os/ucore:stable
 # Fedora base image: quay.io/fedora/fedora-bootc:41
 # CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
 
+RUN rpm-ostree cleanup -m && \
+    dnf clean all
+
+RUN rm -rf /usr/etc
+
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
